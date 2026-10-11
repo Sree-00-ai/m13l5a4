@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Methods</title>
+
+    <!-- CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f4ff;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 550px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px gray;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: darkblue;
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: royalblue;
+        }
+
+        #result {
+            background-color: #f0f8ff;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>JavaScript Methods</h1>
+
+        <p>Enter your name:</p>
+
+        <input type="text" id="username" placeholder="Enter your name">
+
+        <br>
+
+        <button onclick="showMessage()">Call Method</button>
+        <button onclick="showUppercase()">Uppercase</button>
+        <button onclick="showLength()">Find Length</button>
+        <button onclick="showGreeting()">Object Method</button>
+        <button onclick="showAddition()">Return Value</button>
+
+        <div id="result">
+            Click a button to learn JavaScript methods.
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Method 1: A function that displays a message
+        function showMessage() {
+            let name = getName();
+
+            if (name === "") {
+                showResult("Please enter your name!");
+                return;
+            }
+
+            showResult("Hello, " + name + "!");
+        }
+
+        // Method 2: Using the built-in toUpperCase() method
+        function showUppercase() {
+            let name = getName();
+
+            if (name === "") {
+                showResult("Please enter your name!");
+                return;
+            }
+
+            showResult(name.toUpperCase());
+        }
+
+        // Method 3: Using the built-in length property
+        function showLength() {
+            let name = getName();
+
+            if (name === "") {
+                showResult("Please enter your name!");
+                return;
+            }
+
+            showResult("Number of characters: " + name.length);
+        }
+
+        // Method 4: A method inside an object
+        let student = {
+            name: "Ravi",
+
+            greet: function () {
+                return "Hello! My name is " + this.name;
+            }
+        };
+
+        function showGreeting() {
+            showResult(student.greet());
+        }
+
+        // Method 5: A function with parameters and a return value
+        function add(a, b) {
+            return a + b;
+        }
+
+        function showAddition() {
+            let total = add(10, 20);
+            showResult("10 + 20 = " + total);
+        }
+
+        // Helper functions
+        function getName() {
+            return document.getElementById("username").value.trim();
+        }
+
+        function showResult(message) {
+            document.getElementById("result").textContent = message;
+        }
+    </script>
+
+</body>
+
+</html>
